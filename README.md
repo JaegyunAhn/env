@@ -1,2 +1,4 @@
-# env
-env settings for jadyn
+# packages managed by this env
+nvim 
+Karabiner 
+Hammerspoon
