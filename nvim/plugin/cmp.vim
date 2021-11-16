@@ -4,8 +4,8 @@ lua <<EOF
   -- Setup nvim-cmp.
   local cmp = require'cmp'
   cmp.setup({
-    snippet = {
-    },
+    -- snippet = {
+    -- },
     mapping = {
       ['<C-d>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
       ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
@@ -18,7 +18,7 @@ lua <<EOF
       ['<CR>'] = cmp.mapping.confirm({ select = true }),
     },
     sources = cmp.config.sources({
-      { name = 'nvim_lsp' },
+      -- { name = 'nvim_lsp' },
       -- { name = 'vsnip' }, -- For vsnip users.
       -- { name = 'luasnip' }, -- For luasnip users.
       -- { name = 'ultisnips' }, -- For ultisnips users.
