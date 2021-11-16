@@ -19,9 +19,12 @@ Plug 'hrsh7th/nvim-cmp'
 Plug 'tpope/vim-fugitive'
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'mbbill/undotree'
-" undo tree
+Plug 'preservim/nerdtree'
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
+Plug 'lewis6991/gitsigns.nvim'
 call plug#end()
 
 let mapleader = " "
 
 nnoremap <leader>ut <cmd>UndotreeToggle<CR>
+nnoremap <C-t> <cmd>NERDTreeToggle<CR>
