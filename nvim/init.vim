@@ -28,3 +28,9 @@ let mapleader = " "
 
 nnoremap <leader>ut <cmd>UndotreeToggle<CR>
 nnoremap <C-t> <cmd>NERDTreeToggle<CR>
+
+augroup vimrc_help
+  autocmd!
+  autocmd BufEnter *.txt if &buftype == 'help' | wincmd L | endif
+augroup END
+
