@@ -17,6 +17,7 @@ end)
 hs.hotkey.bind("ctrl", "space", function ()
 	local current = hs.keycodes.currentSourceID()
 	if current == inputSource.korean then
+        hs.eventtap.keyStroke({}, 'right')
 		hs.keycodes.currentSourceID(inputSource.english)
 	else
 		hs.keycodes.currentSourceID(inputSource.korean)
@@ -43,7 +44,7 @@ for i = 1, #workspaces do
     hs.hotkey.bind("cmd", tostring(i), function () openAndMaximize(workspaces[i]) end)
 end
 
-hs.hotkey.bind("cmd", '`', function ()
+hs.hotkey.bind("cmd", "escape", function ()
     for i = 1, #workspaces do
         hs.application.open(workspaces[i])
     end
