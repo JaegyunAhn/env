@@ -9,6 +9,7 @@ local inputSource = {
 hs.hotkey.bind({}, 'f20', function ()
     local current = hs.keycodes.currentSourceID()
 	if not (current == inputSource.english) then
+        hs.eventtap.keyStroke({}, 'right')
 		hs.keycodes.currentSourceID(inputSource.english)
 	end
     hs.eventtap.keyStroke({}, 'escape')
