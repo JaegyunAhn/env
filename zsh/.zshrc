@@ -68,4 +68,6 @@ export PATH="$PATH:/usr/local/opt/node@16/bin:/Users/anjaegyun/go/bin:/Users/anj
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 alias vim=nvim
-tmux-sessionizer
+if [[ -z $TMUX ]]; then
+    tmux-sessionizer
+fi
