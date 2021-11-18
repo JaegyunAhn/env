@@ -7,11 +7,11 @@ local inputSource = {
 }
 
 hs.hotkey.bind({}, 'f20', function ()
-	local current = hs.keycodes.currentSourceID()
+    local current = hs.keycodes.currentSourceID()
 	if not (current == inputSource.english) then
 		hs.keycodes.currentSourceID(inputSource.english)
 	end
-	hs.eventtap.keyStroke({}, 'escape')
+    hs.eventtap.keyStroke({}, 'escape')
 end)
 
 hs.hotkey.bind("ctrl", "space", function ()
@@ -34,7 +34,6 @@ end
 workspaces = {
     "com.googlecode.iterm2",
     "com.google.Chrome",
-    "com.jetbrains.intellij",
     "com.jetbrains.datagrip",
     "com.tinyspeck.slackmacgap",
     "notion.id",
