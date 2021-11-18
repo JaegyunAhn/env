@@ -1,0 +1,29 @@
+#!/bin/bash
+tmux_running=$(pgrep tmux)
+inside_session=$TMUX
+if [[ -z $tmux_running ]]; then
+    tmux new-session -ds default
+fi
+
+if [[ $# -lt 1 ]]; then
+    if [[ -z $inside_session ]]; then
+        tmux attach-session -t default
+    else
+        tmux switch-client -t default
+    fi
+    exit 0
+fi
+dir_path=$1
+session_name=$(basename $dir_path)
+
+if [[ -z $inside_session ]]; then
+    tmux new-session -As $session_name -c dir_path
+    exit 0
+fi
+
+if ! tmux has-session -t $session_name 2> /dev/null; then
+    tmux new-session -ds $session_name -c $dir_path
+fi
+tmux switch-client -t $session_name
+exit 0
+
