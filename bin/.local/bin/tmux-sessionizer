@@ -31,8 +31,9 @@ declare_windows() {
 attach_session() {
     local current_windows=($(tmux list-windows -t $session_name -F "#{window_name}"))
     if [[ -z $inside_session ]]; then
-        tmux attach-session -t ${session_name}:${current_windows[0]}
+        tmux attach-session -t ${session_name}:${current_windows[0]} -c ${dir_path}
     else
+        tmux send-keys -t ${session_name}:${current_windows[0]} "cd ${dir_path}" Enter "clear" Enter
         tmux switch-client -t ${session_name}:${current_windows[0]}
     fi
 }
