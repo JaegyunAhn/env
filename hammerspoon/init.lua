@@ -18,7 +18,6 @@ end)
 hs.hotkey.bind("ctrl", "space", function ()
 	local current = hs.keycodes.currentSourceID()
 	if current == inputSource.korean then
-        hs.eventtap.keyStroke({}, 'right')
 		hs.keycodes.currentSourceID(inputSource.english)
 	else
 		hs.keycodes.currentSourceID(inputSource.korean)
