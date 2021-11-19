@@ -1,4 +1,6 @@
 # packages managed by this env
-nvim 
-Karabiner 
-Hammerspoon
+zsh  
+nvim  
+tmux  
+Karabiner  
+Hammerspoon  
