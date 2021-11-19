@@ -1,29 +1,43 @@
 #!/bin/bash
 tmux_running=$(pgrep tmux)
 inside_session=$TMUX
-if [[ -z $tmux_running ]]; then
-    tmux new-session -ds default
-fi
 
 if [[ $# -lt 1 ]]; then
-    if [[ -z $inside_session ]]; then
-        tmux attach-session -t default
-    else
-        tmux switch-client -t default
+    dir_path=~
+    session_name=default
+    wish_windows=(shell)
+else
+    dir_path=$1
+    session_name=$(basename $dir_path)
+    shift
+    wish_windows=($@)
+fi
+
+declare_session() {
+    if ! tmux has-session -t $session_name 2> /dev/null; then
+        tmux new-session -ds $session_name
     fi
-    exit 0
-fi
-dir_path=$1
-session_name=$(basename $dir_path)
+}
 
-if [[ -z $inside_session ]]; then
-    tmux new-session -As $session_name -c dir_path
-    exit 0
-fi
+declare_windows() {
+    tmux kill-window -a -t ${session_name}:
+    local current_window=$(tmux list-windows -t $session_name -F "#{window_name}")
+    tmux rename-window -t ${session_name}:${current_window} ${wish_windows[0]}
+    for (( i=1; i<${#wish_windows[@]}; i++ )); do
+        tmux new-window -t ${session_name} -n ${wish_windows[$i]} -c $dir_path
+    done
+}
 
-if ! tmux has-session -t $session_name 2> /dev/null; then
-    tmux new-session -ds $session_name -c $dir_path
-fi
-tmux switch-client -t $session_name
-exit 0
+attach_session() {
+    local current_windows=($(tmux list-windows -t $session_name -F "#{window_name}"))
+    if [[ -z $inside_session ]]; then
+        tmux attach-session -t ${session_name}:${current_windows[0]}
+    else
+        tmux switch-client -t ${session_name}:${current_windows[0]}
+    fi
+}
+
+declare_session
+declare_windows
+attach_session
 
