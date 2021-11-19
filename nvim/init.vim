@@ -22,6 +22,7 @@ Plug 'mbbill/undotree'
 Plug 'preservim/nerdtree'
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 Plug 'lewis6991/gitsigns.nvim'
+Plug 'chun-yang/auto-pairs'
 call plug#end()
 
 let mapleader = " "
@@ -33,4 +34,7 @@ augroup vimrc_help
   autocmd!
   autocmd BufEnter *.txt if &buftype == 'help' | wincmd L | endif
 augroup END
+
+hi Cursor gui=underline
+set guicursor=a:block-Cursor
 

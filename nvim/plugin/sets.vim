@@ -1,6 +1,4 @@
 set exrc
-set relativenumber
-set nu
 
 " search
 set nohlsearch
@@ -23,10 +21,16 @@ set smartindent
 set nowrap
 set scrolloff=8
 
-" etc
+" nvim appearance
+set relativenumber
+set nu
 set guicursor=
 set termguicolors
-set noerrorbells
 set signcolumn=yes
 set cmdheight=2
 set colorcolumn=80
+set cursorline
+
+" etc
+set noerrorbells
+
