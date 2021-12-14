@@ -32,19 +32,16 @@ function openAndMaximize(bundleId)
 end
 
 workspaces = {
-    "com.googlecode.iterm2",
+    "com.jetbrains.intellij",
     "com.google.Chrome",
     "com.jetbrains.datagrip",
     "com.tinyspeck.slackmacgap",
     "notion.id",
-} 
+    [0] = "com.workflowy.desktop",
+    ["\\"] = "com.googlecode.iterm2"
+}
 
-for i = 1, #workspaces do
-    hs.hotkey.bind("cmd", tostring(i), function () openAndMaximize(workspaces[i]) end)
+for k, v in pairs(workspaces) do
+    hs.hotkey.bind("cmd", tostring(k), function () openAndMaximize(workspaces[k]) end)
 end
 
-hs.hotkey.bind("cmd", "escape", function ()
-    for i = 1, #workspaces do
-        hs.application.open(workspaces[i])
-    end
-end)

@@ -1,4 +1,4 @@
-export ZSH="/Users/anjaegyun/.oh-my-zsh"
+export ZSH="/Users/jadyn/.oh-my-zsh"
 ZSH_THEME="refined"
 
 # Uncomment the following line to use case-sensitive completion.
@@ -62,12 +62,9 @@ source $ZSH/oh-my-zsh.sh
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
-export PATH="$PATH:/usr/local/opt/node@16/bin:/Users/anjaegyun/go/bin:/Users/anjaegyun/.local/bin"
+export PATH="$PATH:/usr/local/opt/node@16/bin:/Users/jadyn/go/bin:/Users/jadyn/.local/bin"
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 alias vim=nvim
-if [[ -z $TMUX ]]; then
-    tmux-sessionizer
-fi
